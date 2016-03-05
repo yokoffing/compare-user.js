@@ -2,11 +2,8 @@
 
 var HTMLFILE = "index.html", USERJS = {
   pyllyukko: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
-  //CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
-  //Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
-
-  CrisBRM: "https://raw.githubusercontent.com/joksnet/user.js/patch-1/user.js",
-  Narga: "https://raw.githubusercontent.com/joksnet/user.js-1/patch-1/user.js",
+  CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
+  Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
 }
 
 var http = require('https'), fs = require('fs'),
