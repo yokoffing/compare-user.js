@@ -40,12 +40,6 @@ function render_value(v) {
 }
 
 function render_table(t) {
-  // https://stackoverflow.com/a/30132433
-  // https://stackoverflow.com/a/24080786
-  t = Object.keys(t)
-            .map(function(k) { return { id: k, value: t[k] } })
-            .sort(function(a, b) { return +(a.id > b.id) || -(a.id < b.id) })
-
   var h = '', b = '', i = 0
 
   for (n in USERJS) if (USERJS.hasOwnProperty(n)) h += '<th>' + n + '</th>'
@@ -90,6 +84,11 @@ function main() {
         t[k][n] = r[k]
       }
       if (c++ >= Object.keys(USERJS).length) {
+        // https://stackoverflow.com/a/30132433
+        // https://stackoverflow.com/a/24080786
+        t = Object.keys(t)
+                  .map(function(k) { return { id: k, value: t[k] } })
+                  .sort(function(a, b) { return +(a.id > b.id) || -(a.id < b.id) })
         // https://stackoverflow.com/a/21617560
         var stream = fs.createWriteStream(HTMLFILE).once("open", function() {
           stream.end(render_page(render_table(t)))
