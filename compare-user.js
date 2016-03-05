@@ -20,7 +20,7 @@ function parse_args(argv) {
     console.log('usage: compare-user.js [filename]')
     process.exit(1)
   }
-  var f = argv.pop(), s = [".html"], t = s.indexOf(path.extname(f))
+  var f = argv.pop(), s = [".html", ".js"], t = s.indexOf(path.extname(f))
   if (t === -1) {
     console.log('error: extension not supported')
     process.exit(1)
@@ -98,6 +98,20 @@ function render_page(c) {
        + '</a></body></html>'
 }
 
+function render_js(t) {
+  var i = 0, j = ''
+  for (; i < t.length; i++)
+    if (typeof t[i].value["custom"] != "undefined")
+      j += 'user_pref("' + t[i].id + '", '
+        +  (typeof t[i].value["custom"] == "string"
+             ? '"' + t[i].value["custom"] + '"'
+             : t[i].value["custom"])
+        +  ');\n'
+  return '// Mozilla User Preferences\n'
+       + '// This file is managed by compare-user.js, don\'t make changes here, they\n'
+       + '// will be overwritten.\n\n' + j
+}
+
 function compare(t) {
   var i = 0, n, v, k
   for (; i < t.length; i++) {
@@ -144,6 +158,7 @@ function main(opts) {
           var o = ''
           switch (opts.type) {
             case "html": o = render_page(render_table(t)) ; break
+            case "js": o = render_js(t) ; break
           }
           stream.end(o)
         })
