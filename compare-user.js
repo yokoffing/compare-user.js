@@ -44,7 +44,8 @@ function render_value(v) {
 function render_table(t) {
   var h = '', b = '', i = 0
 
-  for (n in USERJS) if (USERJS.hasOwnProperty(n)) h += '<th>' + n + '</th>'
+  for (n in USERJS) if (USERJS.hasOwnProperty(n))
+    h += '<th><a href="' + USERJS[n] + '">' + n + '</a></th>'
 
   for (; i < t.length; i++) {
     b += '<tr>'
