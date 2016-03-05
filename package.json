@@ -1,0 +1,7 @@
+{
+  "name": "compare-user.js",
+  "main": "./compare-user.js",
+  "dependencies": {
+    "bl": "~1.1"
+  }
+}
