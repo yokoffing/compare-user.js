@@ -73,7 +73,7 @@ function render_page(c) {
        + '<body><div class="c">' + c + '</div></body></html>'
 }
 
-function main(argv) {
+function main() {
   var n, r, k, c = 1, t = {}
   for (n in USERJS) if (USERJS.hasOwnProperty(n)) {
     parse_userjs(n, USERJS[n], function(n) { return function(r) {
@@ -92,4 +92,4 @@ function main(argv) {
   }
 }
 
-main(process.argv.slice(2))
+main()
