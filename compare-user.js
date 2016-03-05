@@ -56,7 +56,7 @@ function render_value(v) {
 }
 
 function render_table(t) {
-  var h = '', b = '', i = 0
+  var h = '', b = '', i = 0, n
 
   for (n in USERJS) if (USERJS.hasOwnProperty(n))
     h += '<th><a href="' + USERJS[n] + '">' + n + '</a></th>'
@@ -98,6 +98,31 @@ function render_page(c) {
        + '</a></body></html>'
 }
 
+function compare(t) {
+  var i = 0, n, v, k
+  for (; i < t.length; i++) {
+    v = {}
+    for (n in USERJS) if (USERJS.hasOwnProperty(n))
+      if (typeof t[i].value[n] != "undefined")
+        v[t[i].value[n]] = typeof v[t[i].value[n]] == "undefined" ? 1
+                         : v[t[i].value[n]] + 1
+    if (Object.keys(v).length == 1) { // there's only one value
+      k = Object.keys(v).pop()
+      // Unanimous or more than 50% of votes for a value to enter custom
+      if (v[k] == Object.keys(USERJS).length || v[k] * 100 / Object.keys(USERJS).length >= 50)
+        switch (true) {
+          case k == "true": t[i].value['custom'] = true ; break
+          case k == "false": t[i].value['custom'] = false ; break
+          case k == "": t[i].value['custom'] = k ; break
+          case !isNaN(k): t[i].value['custom'] = parseInt(k) ; break
+          default: t[i].value['custom'] = k
+        }
+    }
+  }
+  USERJS['custom'] = 'user.js'
+  return t
+}
+
 function main(opts) {
   var n, r, k, c = 1, t = {}
   for (n in USERJS) if (USERJS.hasOwnProperty(n)) {
@@ -113,11 +138,12 @@ function main(opts) {
         t = Object.keys(t)
                   .map(function(k) { return { id: k, value: t[k] } })
                   .sort(function(a, b) { return +(a.id > b.id) || -(a.id < b.id) })
+        t = compare(t)
         // https://stackoverflow.com/a/21617560
         var stream = fs.createWriteStream(opts.file).once("open", function() {
           var o = ''
           switch (opts.type) {
-            case "html": o = render_page(render_table(t))
+            case "html": o = render_page(render_table(t)) ; break
           }
           stream.end(o)
         })
