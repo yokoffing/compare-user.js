@@ -67,10 +67,17 @@ function render_table(t) {
 }
 
 function render_page(c) {
-  return '<!DOCTYPE html>'
-       + '<html><head><meta charset="utf-8"><title>user.js</title>'
-       + '<style>table,th,td{border-collapse:collapse;border:1px solid #222;padding:3px}tr:hover{background-color:#ccc}</style></head>'
-       + '<body><div class="c">' + c + '</div></body></html>'
+  var s = 'table,th,td{border-collapse:collapse;border:1px solid #222;padding:3px}'
+        + 'tr:hover{background-color:#ccc}'
+        + 'a.r{position:absolute;top:0;right:0;border:0}'
+
+  return '<!DOCTYPE html><html><head><meta charset="utf-8">'
+       + '<title>user.js</title><style>' + s + '</style></head><body>'
+       + '<p>Compare different <code>user.js</code>.</p>'
+       + '<div class="c">' + c + '</div>'
+       + '<a href="https://github.com/jm42/compare-user.js" class="r">'
+       + '<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">'
+       + '</a></body></html>'
 }
 
 function main() {
