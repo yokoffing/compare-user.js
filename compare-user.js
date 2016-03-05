@@ -4,6 +4,11 @@ var HTMLFILE = "index.html", USERJS = {
   pyllyukko: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
   CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
   Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
+
+  // Users
+  //TheReverend403: "https://raw.githubusercontent.com/TheReverend403/user.js/master/user.js",
+  //"Vyral-Protoss": "https://raw.githubusercontent.com/Vyral-Protoss/user.js-pour-Firefox/master/user.js",
+  //LadyDascalie: "https://raw.githubusercontent.com/LadyDascalie/userjs/master/user.js",
 }
 
 var http = require('https'), fs = require('fs'),
