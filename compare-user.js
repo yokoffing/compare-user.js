@@ -66,6 +66,7 @@ function render_table(t) {
 function render_page(c) {
   var s = 'body{background-color:#eee}'
         + 'a{color:#337ab7;text-decoration:none}'
+        + 'main{padding:0 15px 0 15px;margin: auto}'
         + 'p,th,td{font-size:14px;line-height:1.428}'
         + 'table,th,td{border-collapse:collapse}'
         + 'tbody tr:nth-of-type(odd){background-color:#f9f9f9}'
@@ -77,8 +78,7 @@ function render_page(c) {
 
   return '<!DOCTYPE html><html><head><meta charset="utf-8">'
        + '<title>user.js</title><style>' + s + '</style></head><body>'
-       + '<p>Compare different <code>user.js</code>.</p>'
-       + '<div class="c">' + c + '</div>'
+       + '<main><p>Compare different <code>user.js</code>.</p>' + c + '</main>'
        + '<a href="https://github.com/jm42/compare-user.js" class="r">'
        + '<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">'
        + '</a></body></html>'
