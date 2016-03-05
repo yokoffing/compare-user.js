@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var HTMLFILE = "index.html", USERJS = {
+var USERJS = {
   pyllyukko: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
   CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
   Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
@@ -11,8 +11,22 @@ var HTMLFILE = "index.html", USERJS = {
   //LadyDascalie: "https://raw.githubusercontent.com/LadyDascalie/userjs/master/user.js",
 }
 
-var http = require('https'), fs = require('fs'),
+var http = require('https'), fs = require('fs'), path = require('path'),
     vm = require('vm'), bl = require('bl')
+
+function parse_args(argv) {
+  if (argv.length == 0) return { file: "index.html", type: "html" }
+  if (argv.length != 1) {
+    console.log('usage: compare-user.js [filename]')
+    process.exit(1)
+  }
+  var f = argv.pop(), s = [".html"], t = s.indexOf(path.extname(f))
+  if (t === -1) {
+    console.log('error: extension not supported')
+    process.exit(1)
+  }
+  return { file: f, type: s[t].substr(1) }
+}
 
 function parse_userjs(n, u, cb) {
   // https://stackoverflow.com/a/7810354
@@ -84,7 +98,7 @@ function render_page(c) {
        + '</a></body></html>'
 }
 
-function main() {
+function main(opts) {
   var n, r, k, c = 1, t = {}
   for (n in USERJS) if (USERJS.hasOwnProperty(n)) {
     parse_userjs(n, USERJS[n], function(n) { return function(r) {
@@ -100,12 +114,16 @@ function main() {
                   .map(function(k) { return { id: k, value: t[k] } })
                   .sort(function(a, b) { return +(a.id > b.id) || -(a.id < b.id) })
         // https://stackoverflow.com/a/21617560
-        var stream = fs.createWriteStream(HTMLFILE).once("open", function() {
-          stream.end(render_page(render_table(t)))
+        var stream = fs.createWriteStream(opts.file).once("open", function() {
+          var o = ''
+          switch (opts.type) {
+            case "html": o = render_page(render_table(t))
+          }
+          stream.end(o)
         })
       }
     }}(n))
   }
 }
 
-main()
+main(parse_args(process.argv.slice(2)))
