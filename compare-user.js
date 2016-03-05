@@ -69,7 +69,7 @@ function render_table(t) {
 function render_page(c) {
   return '<!DOCTYPE html>'
        + '<html><head><meta charset="utf-8"><title>user.js</title>'
-       + '<style>table,th,td{border:1px solid #ddd}</style></head>'
+       + '<style>table,th,td{border-collapse:collapse;border:1px solid #222;padding:3px}tr:hover{background-color:#ccc}</style></head>'
        + '<body><div class="c">' + c + '</div></body></html>'
 }
 
