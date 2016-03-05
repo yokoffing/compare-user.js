@@ -64,8 +64,15 @@ function render_table(t) {
 }
 
 function render_page(c) {
-  var s = 'table,th,td{border-collapse:collapse;border:1px solid #222;padding:3px}'
-        + 'tr:hover{background-color:#ccc}'
+  var s = 'body{background-color:#eee}'
+        + 'a{color:#337ab7;text-decoration:none}'
+        + 'p,th,td{font-size:14px;line-height:1.428}'
+        + 'table,th,td{border-collapse:collapse}'
+        + 'tbody tr:nth-of-type(odd){background-color:#f9f9f9}'
+        + 'tbody tr:hover{background-color:#f5f5f5}'
+        + 'th{vertical-align:bottom;border-bottom:2px solid #ddd;text-align:left}'
+        + 'th,td{padding:8px;}'
+        + 'td{vertical-align:top;border-top:1px solid #ddd}'
         + 'a.r{position:absolute;top:0;right:0;border:0}'
 
   return '<!DOCTYPE html><html><head><meta charset="utf-8">'
