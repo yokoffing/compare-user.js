@@ -53,7 +53,7 @@ function render_table(t) {
   for (; i < t.length; i++) {
     b += '<tr>'
     b += '<td>' + t[i].id + '</td>'
-    for (n in USERJS) if (USERJS.hasOwnProperty(n)) { //console.log(t[i].id, t[i].value)
+    for (n in USERJS) if (USERJS.hasOwnProperty(n)) {
       b += '<td><code>'
         + render_value(typeof t[i].value[n] == "undefined" ? null : t[i].value[n])
         +  '</code></td>'
