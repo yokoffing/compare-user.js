@@ -4,6 +4,7 @@ var USERJS = {
   pyllyukko: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
   CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
   Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
+  ghacks: "https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js",
 
   // Users
   //TheReverend403: "https://raw.githubusercontent.com/TheReverend403/user.js/master/user.js",

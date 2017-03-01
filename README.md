@@ -3,8 +3,9 @@
 Script that generates an `user.js` based on several privacy-advocate versions:
 
 - [pyllyukko](https://github.com/pyllyukko/user.js),
-- [CrisBRM](https://github.com/CrisBRM/user.js) and
-- [Narga](https://github.com/Narga/user.js).
+- [CrisBRM](https://github.com/CrisBRM/user.js),
+- [Narga](https://github.com/Narga/user.js) and
+- [ghacks](https://github.com/ghacksuserjs/ghacks-user.js).
 
 To generate a `user.js` use:
 
