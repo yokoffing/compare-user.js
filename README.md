@@ -24,6 +24,7 @@ $ cp user.js ~/.mozila/firefox/xxxxxxxx.default/
 Because of some unfavorable differences, I also include myself the following:
 
 ```js
+user_pref("app.update.auto", false);
 user_pref("accessibility.blockautorefresh", true);
 user_pref("browser.formfill.enable", false);
 user_pref("browser.safebrowsing.enabled", false);
@@ -31,6 +32,8 @@ user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.startup.page", 0);
 user_pref("network.cookie.lifetimePolicy", 2);
 user_pref("network.http.sendRefererHeader", 1);
+user_pref("privacy.trackingprotection.enabled", false);
+user_pref("privacy.trackingprotection.pbmode.enabled", false);
 ```
 
 ## HTML Output
