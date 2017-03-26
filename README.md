@@ -30,9 +30,7 @@ user_pref("browser.safebrowsing.enabled", false);
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.startup.page", 0);
 user_pref("network.cookie.lifetimePolicy", 2);
-user_pref("network.cookie.thirdparty.sessionOnly", true);
 user_pref("network.http.sendRefererHeader", 1);
-user_pref("security.mixed_content.block_active_content", true);
 ```
 
 ## HTML Output
