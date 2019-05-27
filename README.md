@@ -36,6 +36,8 @@ user_pref("privacy.trackingprotection.enabled", false);
 user_pref("privacy.trackingprotection.pbmode.enabled", false);
 ```
 
+Check [automatic conections](https://wiki.debian.org/Firefox#Automatic_connections) configuration.
+
 ## HTML Output
 
 It is possible to output an HTML table (with some CSS inspired by [bootstrap])
