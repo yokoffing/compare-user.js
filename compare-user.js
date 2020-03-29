@@ -1,15 +1,12 @@
 #!/usr/bin/env node
 
 var USERJS = {
-  pyllyukko: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
-  CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
-  Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
+  yokoffing: "https://raw.githubusercontent.com/yokoffing/Better-Fox/master/user.js",
   ghacks: "https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js",
-
-  // Users
-  //TheReverend403: "https://raw.githubusercontent.com/TheReverend403/user.js/master/user.js",
-  //"Vyral-Protoss": "https://raw.githubusercontent.com/Vyral-Protoss/user.js-pour-Firefox/master/user.js",
-  //LadyDascalie: "https://raw.githubusercontent.com/LadyDascalie/userjs/master/user.js",
+  pyllyukko_relaxed: "https://raw.githubusercontent.com/pyllyukko/user.js/relaxed/user.js",
+  pyllyukko_hardened: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
+  //CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
+  //Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
 }
 
 var http = require('https'), fs = require('fs'), path = require('path'),
@@ -95,18 +92,18 @@ function render_page(c) {
        + '<title>user.js</title><style>' + s + '</style></head><body>'
        + '<main><p>Compare different <code>user.js</code>.</p>' + c + '</main>'
        + '<a href="https://github.com/jm42/compare-user.js" class="r">'
-       + '<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">'
+       //+ '<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">'
        + '</a></body></html>'
 }
 
 function render_js(t) {
   var i = 0, j = ''
   for (; i < t.length; i++)
-    if (typeof t[i].value["custom"] != "undefined")
+    if (typeof t[i].value["CONCENSUS"] != "undefined")
       j += 'user_pref("' + t[i].id + '", '
-        +  (typeof t[i].value["custom"] == "string"
-             ? '"' + t[i].value["custom"] + '"'
-             : t[i].value["custom"])
+        +  (typeof t[i].value["CONCENSUS"] == "string"
+             ? '"' + t[i].value["CONCENSUS"] + '"'
+             : t[i].value["CONCENSUS"])
         +  ');\n'
   return '// Mozilla User Preferences\n'
        + '// This file is managed by compare-user.js, don\'t make changes here, they\n'
@@ -123,18 +120,19 @@ function compare(t) {
                          : v[t[i].value[n]] + 1
     if (Object.keys(v).length == 1) { // there's only one value
       k = Object.keys(v).pop()
-      // Unanimous or more than 50% of votes for a value to enter custom
+      // Unanimous or more than 50% of votes for a value to enter CONCENSUS
       if (v[k] == Object.keys(USERJS).length || v[k] * 100 / Object.keys(USERJS).length >= 50)
         switch (true) {
-          case k == "true": t[i].value['custom'] = true ; break
-          case k == "false": t[i].value['custom'] = false ; break
-          case k == "": t[i].value['custom'] = k ; break
-          case !isNaN(k): t[i].value['custom'] = parseInt(k) ; break
-          default: t[i].value['custom'] = k
+          case k == "true": t[i].value['CONCENSUS'] = true ; break
+          case k == "false": t[i].value['CONCENSUS'] = false ; break
+          case k == "": t[i].value['CONCENSUS'] = k ; break
+          case !isNaN(k): t[i].value['CONCENSUS'] = parseInt(k) ; break
+          default: t[i].value['CONCENSUS'] = k
         }
     }
   }
-  USERJS['custom'] = 'user.js'
+  /***** ENABLE FOR "CUSTOM" / "CONCENSUS" TOTAL ******/
+  //USERJS['CONCENSUS'] = 'user.js'
   return t
 }
 
