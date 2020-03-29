@@ -132,7 +132,7 @@ function compare(t) {
     }
   }
   /***** ENABLE FOR "CUSTOM" / "CONCENSUS" TOTAL ******/
-  //USERJS['CONCENSUS'] = 'user.js'
+  USERJS['CONCENSUS'] = 'user.js'
   return t
 }
 
