@@ -1,11 +1,10 @@
 # compare-user.js
 
-Script that generates an `user.js` based on several privacy-advocate versions:
+Script that generates an `user.js` based on selected privacy-advocate versions:
 
 - [yokoffing](https://github.com/yokoffing/Better-Fox),
 - [pyllyukko](https://github.com/pyllyukko/user.js), and
 - [ghacks](https://github.com/ghacksuserjs/ghacks-user.js).
-
 
 To generate a `user.js` use:
 
@@ -20,6 +19,8 @@ your profile directory:
 ```sh
 $ cp user.js ~/.mozila/firefox/xxxxxxxx.default/
 ```
+
+Check [automatic conections](https://wiki.debian.org/Firefox#Automatic_connections) configuration.
 
 ## HTML Output
 

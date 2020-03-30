@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 var USERJS = {
-  yokoffing: "https://raw.githubusercontent.com/yokoffing/Better-Fox/master/user.js",
-  ghacks: "https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js",
+  yokoffing_BetterFox: "https://raw.githubusercontent.com/yokoffing/Better-Fox/master/user.js",
   pyllyukko_relaxed: "https://raw.githubusercontent.com/pyllyukko/user.js/relaxed/user.js",
-  pyllyukko_hardened: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
+  //pyllyukko_hardened: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js",
+  ghacks_userjs: "https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js",
   //CrisBRM: "https://raw.githubusercontent.com/CrisBRM/user.js/master/user.js",
   //Narga: "https://raw.githubusercontent.com/Narga/user.js/master/user.js",
 }
@@ -91,8 +91,7 @@ function render_page(c) {
   return '<!DOCTYPE html><html><head><meta charset="utf-8">'
        + '<title>user.js</title><style>' + s + '</style></head><body>'
        + '<main><p>Compare different <code>user.js</code>.</p>' + c + '</main>'
-       + '<a href="https://github.com/jm42/compare-user.js" class="r">'
-       //+ '<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">'
+       + '<a href="https://github.com/yokoffing/compare-user.js" class="r">'
        + '</a></body></html>'
 }
 
@@ -132,7 +131,7 @@ function compare(t) {
     }
   }
   /***** ENABLE FOR "CUSTOM" / "CONCENSUS" TOTAL ******/
-  //USERJS['CONCENSUS'] = 'user.js'
+  USERJS['CONCENSUS'] = 'user.js'
   return t
 }
 
